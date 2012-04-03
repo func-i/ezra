@@ -1,0 +1,52 @@
+<fieldset>
+  <legend>Create a Job</legend>
+
+  <div class="control-group">
+    <label class="control-label" for="title">Title</label>
+    <div class="controls">
+      <%= form.text_field :title, :class=>'span6' %>
+      <!--p class="help-block">A Title for this job</p-->
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="company_name">Company</label>
+    <div class="controls">
+      <%= form.text_field :company_name, :class=>'span6' %>
+      <!--p class="help-block">A Title for this job</p-->
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="tags">Tags</label>
+    <div class="controls">
+      <%= text_field_tag :tags, @job.tags.join(','), :class=>'span6' %>
+      <!--p class="help-block">A Title for this job</p-->
+    </div>
+  </div>
+
+
+  <div class="control-group">
+    <label class="control-label" for="location">Location</label>
+    <div class="controls">
+      <%= form.text_field :location, :class=>'span6' %>
+      <!--p class="help-block">A Title for this job</p-->
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="salary">Salary</label>
+    <div class="controls">
+      <!--label class="checkbox">
+      <%= form.check_box :is_hourly %>
+        is hourly?
+      </label-->
+      <div class="input-prepend">
+        <span class="add-on">$</span>
+        <%= form.text_field :salary, :class=>'span6' %>
+      </div>
+      <!--p class="help-block">A Title for this job</p-->
+    </div>
+  </div>
+
+</fieldset>

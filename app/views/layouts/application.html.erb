@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jStart - <%= yield :title %></title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render 'shared/navbar' %>
+
+    <div class="container">
+
+      <%= yield(:crumbs) %>
+
+      <% page_name = yield :page_name %>
+      <% if page_name.present? %>
+        <% page_desc = yield :page_desc %>
+        <div class="page-header">
+          <h1>
+            <%= page_name  %>
+            <small><%= page_desc %></small>
+          </h1>
+        </div>
+      <% end %>
+
+      <%= render 'shared/flash', :flash => flash %>
+
+      <%= yield %>
+
+      <footer>
+        <div class="container">
+          <p class="pull-right">
+            <%= link_to 'Press', '#' %>
+            <span style="color:#CCC">|</span>
+            <%= link_to 'FAQ', '#' %>
+            <span style="color:#CCC">|</span>
+            <%= link_to 'Help & Support', '#' %>
+            <span style="color:#CCC">|</span>
+            <%= link_to 'Terms & Conditions', '#' %>
+            <span style="color:#CCC">|</span>
+            <%= link_to 'Privacy Policy', '#' %>
+          </p>
+          <p>&copy; jStart <%= Date.today.year %>.</p>
+        </div>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <%= yield :end_of_body %>
+
+  </body>
+</html>

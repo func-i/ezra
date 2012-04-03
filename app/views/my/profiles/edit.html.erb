@@ -1,0 +1,20 @@
+<% provide :page_name, "Update your profile" %>
+<% provide :title, "Update your profile" %>
+
+<% provide :crumbs, crumb_trail({
+    'My' =>  nil,
+    'Profile' => profile_path(current_user),
+    'Edit' => edit_my_profile_path
+  }) %>
+
+<%= form_for current_user, :url => my_profile_path, :method => :put do |f| %>
+  <%= render 'shared/form_errors', :f => f %>
+
+  <%= render f %>
+
+  <div class="actions">
+    <%= form_update_button f %>
+    <%= link_to 'Cancel', :back, :class => "btn" %>
+  </div>
+
+<% end %>

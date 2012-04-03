@@ -1,0 +1,50 @@
+<% provide :page_name, @job.title %>
+<% provide :page_desc do %>
+  <%= @job.tags.collect(&:name).join(', ').capitalize! %>
+  <%#= link_to 'Apply Now', '', :class=>'btn btn-large btn-primary'%>
+<% end %>
+<% provide :title, @job.title %>
+
+<% provide :crumbs, crumb_trail({
+    'Jobs' => jobs_path,
+    @job.title => nil
+  }) %>
+
+<div class="row">
+  <div class="span12">
+    <% if current_user && current_user.job_applications.for_job_id(@job.id).present? %>
+      <%= link_to 'Already Applied', '', :class=>'btn btn-large disabled'%>
+    <% else %>
+      <%= link_to 'Apply Now', job_application_path(@job), :method => :post, :class=>'btn btn-large btn-primary'%>
+    <% end %>
+  </div>
+</div>
+<br/>
+
+<div class="row">
+  <span class="span12">
+    <h3>
+      <%= @job.company_name %>
+      <small> / <%= @job.location %> / $<%= @job.salary %><%= "/hr" if @job.is_hourly? %></small>
+    </h3>
+  </span>
+</div>
+
+<!--div class="row">
+  <span class="span12">Job expires on <%= @job %></span>
+</div-->
+
+<div class="row">
+  <span class="span12"><%= @job.description %></span>
+</div>
+
+<br/>
+<div class="row">
+  <div class="span12">
+    <% if current_user && current_user.job_applications.for_job_id(@job.id).present? %>
+      <%= link_to 'Already Applied', '', :class=>'btn btn-large disabled'%>
+    <% else %>
+      <%= link_to 'Apply Now', job_application_path(@job), :method => :post, :class=>'btn btn-large btn-primary'%>
+    <% end %>
+  </div>
+</div>

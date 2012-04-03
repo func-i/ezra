@@ -1,0 +1,10 @@
+<% provide :page_name, @user.name %>
+<% provide :page_desc do %>
+  <%= @user.tags.collect(&:name).join(', ').capitalize! %>
+<% end %>
+<% provide :title, @user.name %>
+
+<% provide :crumbs, crumb_trail({
+    'Profiles' => nil,
+    @user.name => nil
+  }) %>

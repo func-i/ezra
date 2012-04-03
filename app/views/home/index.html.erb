@@ -1,0 +1,16 @@
+<% provide :title, "Something goes here" %>
+
+<!-- Main hero unit for a primary marketing message or call to action -->
+<div class="hero-unit">
+  <h1></h1>
+
+  <br/>
+
+  <% unless signed_in? %>
+    <br/>
+
+    <p>
+      <%= link_to 'Join Our Community &raquo;'.html_safe, [:new, :user, :registration], :class => "btn btn-primary btn-large" %>
+    </p>
+  <% end %>
+</div>
