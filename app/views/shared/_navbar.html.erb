@@ -3,14 +3,14 @@
     <div class="container">
       <a class="brand" href="/">jStart</a>
       <ul class="nav">
-        <li class="<%= 'active' if controller.controller_name == 'home'%>">
-          <%= link_to 'Dashboard', '#' %>
+        <li class="<%= 'active' if @nav == :dashboard %>">
+          <%= link_to 'Dashboard', my_dashboard_path %>
         </li>
         <li class="<%= 'active' if controller.controller_name == 'jobs' && controller.action_name == 'new'%>">
-          <%= link_to 'Create', new_my_job_path %>
+          <%= link_to 'Create', new_job_path %>
         </li>
         <li class="<%= 'active' if controller.controller_name == 'jobs' && controller.action_name == 'index'%>">
-          <%= link_to 'Explore', '#' %>
+          <%= link_to 'Explore', jobs_path %>
         </li>
       </ul>
 

@@ -1,0 +1,26 @@
+<div class="well">
+  <ul class="nav nav-list">
+
+    <li class="<%= 'active' if @sub_nav == :home %>">
+      <%= link_to '<i class="icon-home"></i> '.html_safe + "Home", [:my, :dashboard] %>
+    </li>
+
+    <li class="nav-header">Profile</li>
+    <li>
+      <%= link_to '<i class="icon-user"></i> '.html_safe + 'View My Profile', profile_path(current_user) %>
+    </li>
+    <li>
+      <%= link_to '<i class="icon-edit"></i> '.html_safe + 'Edit My Profile', edit_my_profile_path %>
+    </li>
+
+    <li class="nav-header">Jobs</li>
+    <li class="<%= 'active' if @sub_nav == :my_jobs %>">
+      <%= link_to '<i class="icon-flag"></i> '.html_safe + 'My Jobs', [:my, :jobs] %>
+    </li>
+
+    <li class="<%= 'active' if @sub_nav == :my_applications %>">
+      <%= link_to '<i class="icon-inbox"></i> '.html_safe + 'My Applications', [:my, :applications] %>
+    </li>
+
+  </ul>
+</div>

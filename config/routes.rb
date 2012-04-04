@@ -2,18 +2,19 @@ Ezra::Application.routes.draw do
   devise_for :users, :controllers => { :sessions => "sessions"}
   match '/auth/:provider/callback' => 'authentications#create'
 
-  resources :jobs, :only => [:index, :show] do
-    resource :application, :controller => :job_applications, :only => [:create]
-  end
+  resources :jobs, :only => [:index, :show, :new]
   
   resources :profiles, :only => [:show]
 
   namespace :my do
     resource :profile, :only => [:edit, :update]
 
-    resources :jobs, :only => [:new, :create, :edit, :update, :destroy] do
-      resources :applications, :controller => :job_applications, :only => [:index]
+    resource :dashboard, :only => [:show]
+
+    resources :jobs, :only => [:index, :create, :edit, :update, :destroy] do
+      resource :application, :controller => :job_applications, :only => [:create]
     end
+    resources :applications, :controller => :job_applications, :only => [:index]
   end
 
   root :to => "home#index"

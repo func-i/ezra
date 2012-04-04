@@ -27,10 +27,16 @@ class ApplicationController < ActionController::Base
   #HELPER CREATION/EDIT FUNCTIONS FOR REDIRECT AFTER SIGNIN
   def create_job(params)
     job = Job.create(params[:job])
-    job.user = current_user
+    job.user_id = current_user
 
-    unless params[:tags].blank?
-      tags = params[:tags].split(',')
+    create_tags(job, params[:tags])
+
+    return job
+  end
+
+  def create_tags(job, tags)
+    unless tags.blank?
+      tags = tags.split(',')
       tags.each do |tag_text|
         tag_text.strip!
         tag = Tag.with_name(tag_text).first
@@ -38,8 +44,6 @@ class ApplicationController < ActionController::Base
         job.job_tags.build(:tag => tag)
       end
     end
-
-    return job
   end
 
   def create_job_application(job_id)
@@ -66,6 +70,6 @@ class ApplicationController < ActionController::Base
   end
 
   def get_request
-    session[:stored_request]
+    session[:stored_request] || {}
   end
 end

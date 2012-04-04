@@ -15,7 +15,7 @@
     <% if current_user && current_user.job_applications.for_job_id(@job.id).present? %>
       <%= link_to 'Already Applied', '', :class=>'btn btn-large disabled'%>
     <% else %>
-      <%= link_to 'Apply Now', job_application_path(@job), :method => :post, :class=>'btn btn-large btn-primary'%>
+      <%= link_to 'Apply Now', my_job_application_path(@job), :method => :post, :class=>'btn btn-large btn-primary'%>
     <% end %>
   </div>
 </div>
@@ -35,7 +35,7 @@
 </div-->
 
 <div class="row">
-  <span class="span12"><%= @job.description %></span>
+  <span class="span12"><%= simple_format @job.description %></span>
 </div>
 
 <br/>
@@ -44,7 +44,7 @@
     <% if current_user && current_user.job_applications.for_job_id(@job.id).present? %>
       <%= link_to 'Already Applied', '', :class=>'btn btn-large disabled'%>
     <% else %>
-      <%= link_to 'Apply Now', job_application_path(@job), :method => :post, :class=>'btn btn-large btn-primary'%>
+      <%= link_to 'Apply Now', my_job_application_path(@job), :method => :post, :class=>'btn btn-large btn-primary'%>
     <% end %>
   </div>
 </div>

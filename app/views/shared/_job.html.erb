@@ -1,0 +1,9 @@
+<%= link_to job, :class => 'job-partial' do %>
+  <div class="well">
+    <div>
+      <h3 class="pull-left"><%= truncate(job.title, :length => 40) %></h3>
+      <span class="pull-right">$<%= job.salary %><%= "/hr" if job.is_hourly %></span>
+      <div class="clear"></div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,20 @@
+<% provide :page_name, "Create a Job" %>
+<% provide :page_desc, "A job is a position you are offering in your company" %>
+<% provide :title, "New Job" %>
+
+<% provide :crumbs, crumb_trail({
+    'Jobs' => jobs_path,
+    'Create' => nil
+  }) %>
+
+<%= form_for @job, :url => [:my, @job], :class=>'horizontal-form' do |f| %>
+  <%= render 'shared/form_errors', :f => f %>
+
+  <%= render 'jobs/form', :f => f %>
+
+  <div class="actions">
+    <%= form_create_button f %>
+    <%= link_to 'Cancel', :back, :class => "btn  btn-large" %>
+  </div>
+
+<% end %>

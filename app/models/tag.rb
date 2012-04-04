@@ -9,7 +9,7 @@ class Tag < ActiveRecord::Base
     where(:name => tag_text.downcase)
   }
 
-  def create_with_name!(name_text)
+  def self.create_with_name!(name_text)
     Tag.create!(:name => name_text.capitalize!)
   end
 end
