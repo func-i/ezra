@@ -10,6 +10,6 @@ class Tag < ActiveRecord::Base
   }
 
   def self.create_with_name!(name_text)
-    Tag.create!(:name => name_text.capitalize!)
+    Tag.create!(:name => name_text)
   end
 end

@@ -1,0 +1,31 @@
+<div class="row">
+  <h3 class="span12"><%= @user.location %></h3>
+  <h4 class="span12"><%= @user.email %></h4>
+  <h4 class="span12"><%= @user.telephone %></h4>
+  <% unless @user.twitter_handle.blank? %>
+    <h4 class="span12"><%= link_to "@#{@user.twitter_handle}", "http://www.twitter.com/#!/#{@user.twitter_handle}" %></h4>
+  <% end %>
+  <% unless @user.website.blank? %>
+    <h4 class="span12"><%= link_to @user.website, @user.website %></h4>
+  <% end %>
+</div>
+<br/>
+<div class="row">
+  <% unless @user.tags.empty? %>
+    <h3 class="span12">Tags: <small><%= @user.tags.collect(&:name).join(', ').capitalize %></small></h3>
+  <% end %>
+</div>
+
+<br/>
+<div class="row">
+  <p class="span12"><%= @user.description %></p>
+</div>
+
+<div class="row">
+  <h3 class="span12">Files:</h3>
+  <% @user.user_files.each do |uf| %>
+  <div class="span12">
+      <%= link_to uf.file.url, uf.file.url  %>
+  </div>
+  <% end %>
+</div>

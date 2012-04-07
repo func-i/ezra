@@ -1,0 +1,15 @@
+<% provide :page_name, @user.name %>
+<% provide :page_desc do %>
+  <%= 'Job Application' %>
+<% end %>
+<% provide :title, @user.name %>
+
+<div class="row">
+  <div class="span12">
+    <%= link_to 'Accept', accept_my_job_application_path(@application.job, @application) , :method => :post, :confirm => 'Accept this application?', :class => 'btn btn-large btn-primary'  %>
+    <%= link_to 'Reject', reject_my_job_application_path(@application.job, @application) , :method => :post, :confirm => 'Reject this application?', :class => 'btn btn-large btn-warning'  %>
+  </div>
+</div>
+<br/>
+
+<%= render :partial => 'profiles/show'  %>

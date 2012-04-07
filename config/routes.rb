@@ -12,7 +12,11 @@ Ezra::Application.routes.draw do
     resource :dashboard, :only => [:show]
 
     resources :jobs, :only => [:index, :create, :edit, :update, :destroy] do
-      resource :application, :controller => :job_applications, :only => [:create]
+      resources :application, :controller => :job_applications, :only => [:show, :create] do
+        get :index_for_job, :on => :collection
+        post :reject, :on => :member
+        post :accept, :on => :member
+      end
     end
     resources :applications, :controller => :job_applications, :only => [:index]
   end

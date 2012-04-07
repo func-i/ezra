@@ -12,7 +12,9 @@ class User < ActiveRecord::Base
   
   has_many :user_tags
   has_many :tags, :through => :user_tags
-  
+
+  has_many :user_files
+
   has_many :jobs
 
   has_many :job_applications
@@ -20,7 +22,9 @@ class User < ActiveRecord::Base
 
   #ACCESSORS
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-    :telephone, :city, :province, :name, :twitter_handle, :website, :bio, :avatar
+    :telephone, :city, :province, :name, :twitter_handle, :website, :bio, :avatar, :location, :description, :user_files_attributes
+
+  accepts_nested_attributes_for :user_files
 
   scope :with_application_for_job, lambda{ |job|
     joins(:job_applications).where("job_applications.job_id = ?", job.id)

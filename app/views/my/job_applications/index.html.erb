@@ -8,6 +8,36 @@
     <%= render 'shared/dashboard_nav' %>
   </div>
 
-  
+  <div class="span9">
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Company</th>
+          <th>Salary</th>
+          <th>Location</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @applications.each do |app| %>
+          <tr>
+            <td><%= link_to truncate(app.job.title || 'none'), app.job %></td>
+            <td><%= truncate app.job.company_name %></td>
+            <td><%= "$#{app.job.salary}#{"/hr" if app.job.is_hourly}" %></td>
+            <td><%= app.job.location %></td>
+            <td>
+              <span class="label">Applied</span>
+              <% if app.accepted? %>
+                <span class="label label-success">Accepted</span>
+              <% elsif app.rejected? %>
+                <span class="label label-warning">Rejected</span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
 </div>

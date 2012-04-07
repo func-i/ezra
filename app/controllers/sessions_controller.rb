@@ -4,7 +4,8 @@ class SessionsController < Devise::SessionsController
     respond_to do |format|
       format.js
       format.html do
-        redirect_to '/auth/facebook'
+        sign_in_and_redirect(:user, User.last)
+#        redirect_to '/auth/facebook'
       end
     end
   end

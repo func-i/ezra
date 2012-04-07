@@ -26,7 +26,7 @@
   <div class="control-group">
     <label class="control-label" for="tags">Tags</label>
     <div class="controls">
-      <%= text_field_tag :tags, current_user.tags.join(','), :class=>'span6' %>
+      <%= text_field_tag :tags, current_user.tags.collect(&:name).join(','), :class=>'span6' %>
       <!--p class="help-block">A Title for this job</p-->
     </div>
   </div>
@@ -58,6 +58,37 @@
       </div>
     </div>
   </div>
+
+  <div class="control-group">
+    <label class="control-label" for="telephone">Description</label>
+    <div class="controls">
+      <%= form.text_area :description, :class=>'span6' %>
+      <!--p class="help-block">A Title for this job</p-->
+    </div>
+  </div>
+
+
+  <% current_user.user_files.each do |uf| %>
+    <div class="control-group">
+      <label class="control-label" for="twitter_handle">Delete? </label>
+      <div class="controls">
+        <label class="checkbox">
+          <%= check_box_tag "delete_#{uf.id}" %>
+          <%= uf.file %>
+        </label>
+      </div>
+    </div>
+  <% end %>
+
+<%#= form.fields_for :user_files do |uf| %>
+  <div class="control-group">
+    <label class="control-label" for="fileInput">Upload New File</label>
+    <div class="controls">
+<%#= uf.file_field :file  %>
+      <%= file_field_tag :file %>
+    </div>
+  </div>
+<%# end %>
 
 
 </fieldset>

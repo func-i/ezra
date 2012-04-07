@@ -1,6 +1,8 @@
-<%#
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-%>
+<% provide :page_name, "Browse Jobs" %>
+<% provide :page_desc, "A list of available jobs" %>
+<% provide :title, "Jobs" %>
 
-<%= "index.html" %>
+
+<div class="row">
+  <%= render :partial => 'shared/job', :collection => @jobs %>
+</div>

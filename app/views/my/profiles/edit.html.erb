@@ -7,7 +7,7 @@
     'Edit' => edit_my_profile_path
   }) %>
 
-<%= form_for current_user, :url => my_profile_path, :method => :put do |f| %>
+<%= form_for current_user, :url => my_profile_path, :method => :put, :html => {:multipart => true, :class=>'form-horizontal'} do |f| %>
   <%= render 'shared/form_errors', :f => f %>
 
   <%= render f %>

@@ -1,0 +1,44 @@
+<% provide :page_name, "Job Applications" %>
+<% provide :page_desc, "List of Applicants to #{truncate @job.title}" %>
+<% provide :title, "Job Applications" %>
+
+<div class="row">
+
+  <div class="span3">
+    <%= render 'shared/dashboard_nav' %>
+  </div>
+
+  <div class="span9">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Telephone</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @applications.each do |app| %>
+          <tr class="<%= "accepted" if app.accepted? %>">
+            <td><%= app.user.name %></td>
+            <td><%= app.user.email %></td>
+            <td><%= app.user.telephone %></td>
+            <td>
+              <%= link_to 'View', my_job_application_path(app.job, app) %> |
+              <% if app.accepted? %>
+                ALREADY ACCEPTED
+              <% else %>
+              <%= link_to 'Reject', reject_my_job_application_path(app.job, app) , :method => :post, :confirm => 'Reject this application?'  %> |
+              <%= link_to 'Accept', accept_my_job_application_path(app.job, app) , :method => :post, :confirm => 'Accept this application?'  %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+
+
+</div>

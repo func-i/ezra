@@ -3,14 +3,13 @@
     <div class="container">
       <a class="brand" href="/">jStart</a>
       <ul class="nav">
+        <% if signed_in? %>
         <li class="<%= 'active' if @nav == :dashboard %>">
           <%= link_to 'Dashboard', my_dashboard_path %>
         </li>
-        <li class="<%= 'active' if controller.controller_name == 'jobs' && controller.action_name == 'new'%>">
-          <%= link_to 'Create', new_job_path %>
-        </li>
+        <% end %>
         <li class="<%= 'active' if controller.controller_name == 'jobs' && controller.action_name == 'index'%>">
-          <%= link_to 'Explore', jobs_path %>
+          <%= link_to 'Browse Jobs', jobs_path %>
         </li>
       </ul>
 
@@ -37,6 +36,11 @@
           <% end %>
         </li>
       </ul>
+
+      <div class="pull-right">
+        <%= link_to 'Create a Job!', new_job_path, :class => 'btn btn-warning' %>
+      </div>
+
     </div>
   </div>
 </div>

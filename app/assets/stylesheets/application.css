@@ -7,16 +7,7 @@
  *= require_tree . 
 */
 
-a.job-partial {
-    text-decoration: none;
-    color: black;
-}
-a.job-partial:hover {
-    text-decoration: none;
-    color: black;
-}
-
-.job-partial .well:hover {
-    border-color: gold;
+.table tbody tr.accepted td{
+    background-color: pink;
 }
 

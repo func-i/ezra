@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120312180026) do
+ActiveRecord::Schema.define(:version => 20120407160659) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20120312180026) do
   create_table "job_applications", :force => true do |t|
     t.integer "job_id"
     t.integer "user_id"
+    t.string  "state"
   end
 
   create_table "job_tags", :force => true do |t|
@@ -33,17 +34,26 @@ ActiveRecord::Schema.define(:version => 20120312180026) do
   end
 
   create_table "jobs", :force => true do |t|
-    t.integer "user_id"
-    t.string  "title"
-    t.string  "location"
-    t.string  "company_name"
-    t.float   "salary"
-    t.boolean "is_hourly"
-    t.text    "description"
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "location"
+    t.string   "company_name"
+    t.float    "salary"
+    t.boolean  "is_hourly"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tags", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_files", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "file"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -75,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20120312180026) do
     t.string   "twitter_handle"
     t.string   "website"
     t.text     "bio"
+    t.text     "description"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -1,6 +1,6 @@
 <% provide :page_name, @user.name %>
 <% provide :page_desc do %>
-  <%= @user.tags.collect(&:name).join(', ').capitalize! %>
+  <%= @user.tags.collect(&:name).join(', ') %>
 <% end %>
 <% provide :title, @user.name %>
 
@@ -8,3 +8,5 @@
     'Profiles' => nil,
     @user.name => nil
   }) %>
+
+<%= render :partial => 'show'  %>
